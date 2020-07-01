@@ -1,4 +1,5 @@
-﻿using ExchangeChallenge.Domain.Interfaces;
+﻿using System.Threading.Tasks;
+using ExchangeChallenge.Domain.Interfaces;
 
 namespace ExchangeChallenge.Domain.Services
 {
@@ -9,9 +10,9 @@ namespace ExchangeChallenge.Domain.Services
         public ExchangeService(IFactorRepository factorRepository) =>
             _factorRepository = factorRepository;
 
-        public string GetQuote()
+        public async Task<string> GetQuote(string userId, string category)
         {
-            return _factorRepository.GetFactor();
+            return await _factorRepository.GetFactor();
         }
     }
 }

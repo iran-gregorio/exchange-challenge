@@ -1,7 +1,9 @@
-﻿namespace ExchangeChallenge.Domain.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace ExchangeChallenge.Domain.Interfaces
 {
     public interface IExchangeService
     {
-        public string GetQuote();
+        public Task<string> GetQuote(string userId, string category);
     }
 }

@@ -31,7 +31,7 @@ namespace ExchangeChallenge.Api.Controllers
     
             var permClaims = new List<Claim>();
             permClaims.Add(new Claim("user_id", "1"));
-            permClaims.Add(new Claim("categoru", "VAREJO"));
+            permClaims.Add(new Claim("category", "VAREJO"));
 
             IdentityModelEventSource.ShowPII = true;
    

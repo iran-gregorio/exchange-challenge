@@ -1,8 +1,9 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+
 namespace ExchangeChallenge.Domain.Interfaces
 {
     public interface IFactorRepository
     {
-        public string GetFactor();
+        public Task<string> GetFactor();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using ExchangeChallenge.Api.Extensions;
 using ExchangeChallenge.Api.Security;
 using Microsoft.AspNetCore.Builder;
@@ -20,11 +21,17 @@ namespace ExchangeChallenge.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient("ExchangeRates", x =>
+            {
+                x.BaseAddress = new Uri(Environment.GetEnvironmentVariable("EXCHANGE_RATES_URL"));
+            });
             services.AddJwtSecurity();
             services.AddRepositories();
             services.AddServices();
 
             services.AddControllers();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +51,12 @@ namespace ExchangeChallenge.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Exchange Challenge API");
             });
         }
     }

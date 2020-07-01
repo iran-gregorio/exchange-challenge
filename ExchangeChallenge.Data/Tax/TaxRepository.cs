@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ExchangeChallenge.Data.Tax.Models;
 using ExchangeChallenge.Domain.Interfaces;
 using MongoDB.Driver;
@@ -21,6 +22,9 @@ namespace ExchangeChallenge.Data.Tax
         {
             var categoryModel = await _mongoDatabase.GetCollection<CategoryModel>(_categoryConfigurations.Collection)
                 .Find(c => c.Category.Equals(category)).FirstOrDefaultAsync();
+
+            if (categoryModel == null)
+                throw new Exception("Categoria não encontrada");
 
             return categoryModel.Tax;
         }

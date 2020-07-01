@@ -16,10 +16,10 @@
         "JWT_AUDIENCE": "Exchange",
         "JWT_SECRET": "Exchange_Challenge",
         "JWT_ISSUER": "Exchange",
-        "EXCHANGE_RATES_URL": "https://api.exchangeratesapi.io",
         "CATEGORY_COLLECTION": "categories",
-        "CATEGORY_CONN_STRING": "mongodb://localhost:27017",
+        "EXCHANGE_RATES_URL": "https://api.exchangeratesapi.io",
         "CATEGORY_DATABASE": "test",
+        "CATEGORY_CONN_STRING": "mongodb://localhost:27017",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -30,10 +30,10 @@
         "JWT_AUDIENCE": "Exchange",
         "JWT_SECRET": "Exchange_Challenge",
         "JWT_ISSUER": "Exchange",
-        "EXCHANGE_RATES_URL": "https://api.exchangeratesapi.io",
         "CATEGORY_COLLECTION": "categories",
-        "CATEGORY_CONN_STRING": "mongodb://localhost:27017",
+        "EXCHANGE_RATES_URL": "https://api.exchangeratesapi.io",
         "CATEGORY_DATABASE": "test",
+        "CATEGORY_CONN_STRING": "mongodb://localhost:27017",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"

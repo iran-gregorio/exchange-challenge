@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using ExchangeChallenge.Api.Security;
+using ExchangeChallenge.Infra.Configurations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Logging;
@@ -16,12 +16,10 @@ namespace ExchangeChallenge.Api.Controllers
     [Route("login")]
     public class LoginController : ControllerBase
     {
-        private TokenConfigurations _tokenConfigurations;
+        private readonly TokenConfigurations _tokenConfigurations;
 
-        public LoginController(TokenConfigurations tokenConfigurations)
-        {
+        public LoginController(TokenConfigurations tokenConfigurations) =>
             _tokenConfigurations = tokenConfigurations;
-        }
 
         [HttpGet]
         public ActionResult GenerateToken()

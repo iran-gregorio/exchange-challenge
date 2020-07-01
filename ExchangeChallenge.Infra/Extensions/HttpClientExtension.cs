@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
 
-namespace ExchangeChallenge.Api.Extensions
+namespace ExchangeChallenge.Infra.Extensions
 {
     public static class HttpClientExtension
     {

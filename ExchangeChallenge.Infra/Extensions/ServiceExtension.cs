@@ -2,7 +2,7 @@
 using ExchangeChallenge.Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ExchangeChallenge.Api.Extensions
+namespace ExchangeChallenge.Infra.Extensions
 {
     public static class ServiceExtension
     {

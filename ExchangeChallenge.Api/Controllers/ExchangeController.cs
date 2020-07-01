@@ -19,11 +19,10 @@ namespace ExchangeChallenge.Api.Controllers
         [HttpGet]
         [Produces("application/json")]
         [Route("{currency}")]
-        public async Task<ActionResult<string>> Get(string currency)
+        public async Task<ActionResult<decimal>> Get(string currency, [FromQuery] decimal qty)
         {
-            var userId = User.GetUserId();
             var category = User.GetCategory();
-            return await _exchangeService.GetQuote(userId, category, currency);
+            return await _exchangeService.GetQuote(category, currency, qty);
         }
     }
 }

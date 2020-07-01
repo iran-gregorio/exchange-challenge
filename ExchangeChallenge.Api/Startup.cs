@@ -1,5 +1,5 @@
-using ExchangeChallenge.Api.Extensions;
 using ExchangeChallenge.Api.Security;
+using ExchangeChallenge.Infra.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

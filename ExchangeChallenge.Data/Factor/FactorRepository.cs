@@ -22,10 +22,10 @@ namespace ExchangeChallenge.Data.Factor
         public async Task<decimal> GetFactor(string currency)
         {
             var client = _httpClientFactory.CreateClient("ExchangeRates");
-            var result = await client.GetAsync($"latest?base=BRL&symbols={currency}");
+            var result = await client.GetAsync($"latest?base={currency}&symbols=BRL");
             var stream = await result.Content.ReadAsStreamAsync();
             var exchangeResult = await JsonSerializer.DeserializeAsync<ExchangeRatesResult>(stream, jsonSerializerOptions);
-            return exchangeResult.Rates.FirstOrDefault(x => x.Key.Equals(currency)).Value;
+            return exchangeResult.Rates.FirstOrDefault(x => x.Key.Equals("BRL")).Value;
         }
     }
 }

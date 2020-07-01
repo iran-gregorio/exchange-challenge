@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExchangeChallenge.Api.Security
+namespace ExchangeChallenge.Infra.Configurations
 {
     public class TokenConfigurations
     {

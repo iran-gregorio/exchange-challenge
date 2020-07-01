@@ -4,6 +4,6 @@ namespace ExchangeChallenge.Domain.Interfaces
 {
     public interface IExchangeService
     {
-        public Task<string> GetQuote(string userId, string category, string currency);
+        public Task<decimal> GetQuote(string category, string currency, decimal qty);
     }
 }

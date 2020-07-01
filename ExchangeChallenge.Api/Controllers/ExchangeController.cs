@@ -1,4 +1,5 @@
 ﻿using System;
+using ExchangeChallenge.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,15 @@ namespace ExchangeChallenge.Api.Controllers
     [Authorize("Bearer")]
     public class ExchangeController : ControllerBase
     {
+        private IExchangeService _exchangeService;
+
+        public ExchangeController(IExchangeService exchangeService) =>
+            _exchangeService = exchangeService;
+
         [HttpGet]
         public ActionResult<String> Get()
         {
-            return "Ok";
+            return _exchangeService.GetQuote();
         }
     }
 }

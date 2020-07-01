@@ -1,3 +1,4 @@
+using ExchangeChallenge.Api.Extensions;
 using ExchangeChallenge.Api.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +21,8 @@ namespace ExchangeChallenge.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddJwtSecurity();
+            services.AddRepositories();
+            services.AddServices();
 
             services.AddControllers();
         }

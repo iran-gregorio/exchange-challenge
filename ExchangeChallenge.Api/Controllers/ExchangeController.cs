@@ -17,6 +17,7 @@ namespace ExchangeChallenge.Api.Controllers
             _exchangeService = exchangeService;
 
         [HttpGet]
+        [Produces("application/json)]
         public async Task<ActionResult<string>> Get()
         {
             var userId = User.GetUserId();

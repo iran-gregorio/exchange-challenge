@@ -4,6 +4,6 @@ namespace ExchangeChallenge.Domain.Interfaces
 {
     public interface IFactorRepository
     {
-        public Task<string> GetFactor();
+        public Task<decimal> GetFactor(string currency);
     }
 }

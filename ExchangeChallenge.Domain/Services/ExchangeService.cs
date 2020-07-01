@@ -10,9 +10,10 @@ namespace ExchangeChallenge.Domain.Services
         public ExchangeService(IFactorRepository factorRepository) =>
             _factorRepository = factorRepository;
 
-        public async Task<string> GetQuote(string userId, string category)
+        public async Task<string> GetQuote(string userId, string category, string currency)
         {
-            return await _factorRepository.GetFactor();
+            var factor = await _factorRepository.GetFactor(currency);
+            return factor.ToString();
         }
     }
 }

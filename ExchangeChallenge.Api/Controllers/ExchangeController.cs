@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ExchangeChallenge.Api.Responses;
 using ExchangeChallenge.Api.Security;
 using ExchangeChallenge.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -19,10 +20,17 @@ namespace ExchangeChallenge.Api.Controllers
         [HttpGet]
         [Produces("application/json")]
         [Route("{currency}")]
-        public async Task<ActionResult<decimal>> Get(string currency, [FromQuery] decimal qty)
+        public async Task<ActionResult<ExchangeResponse>> Get(string currency, [FromQuery] decimal qty)
         {
             var category = User.GetCategory();
-            return await _exchangeService.GetQuote(category, currency, qty);
+            var exchange = await _exchangeService.GetQuote(category, currency, qty);
+            return new ExchangeResponse
+            {
+                ValueRequested = exchange.ValueRequested,
+                FactorApplied = exchange.FactorApplied,
+                TaxApplied = exchange.TaxApplied,
+                Total = exchange.Total
+            };
         }
     }
 }

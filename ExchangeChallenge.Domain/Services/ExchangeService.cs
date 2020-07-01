@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ExchangeChallenge.Domain.Interfaces;
+using ExchangeChallenge.Domain.Models;
 
 namespace ExchangeChallenge.Domain.Services
 {
@@ -17,14 +18,20 @@ namespace ExchangeChallenge.Domain.Services
             _taxRepository = taxRepository;
         }
 
-        public async Task<decimal> GetQuote(string category, string currency, decimal qty)
+        public async Task<Exchange> GetQuote(string category, string currency, decimal qty)
         {
             var result = await Task.WhenAll(
                 _factorRepository.GetFactor(currency),
                 _taxRepository.GetTax(category));
             var factor = result[0];
             var tax = result[1];
-            return Math.Round(qty * factor * (1 + tax), 2);
+            return new Exchange
+            {
+                ValueRequested = qty,
+                FactorApplied = factor,
+                TaxApplied = tax,
+                Total = Math.Round(qty * factor * (1 + tax), 2)
+            };
         }
     }
 }

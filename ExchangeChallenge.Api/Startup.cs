@@ -1,3 +1,4 @@
+using System.Text.Json;
 using ExchangeChallenge.Api.Security;
 using ExchangeChallenge.Infra.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -25,7 +26,12 @@ namespace ExchangeChallenge.Api
             services.AddRepositories();
             services.AddServices();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                });
 
             services.AddSwaggerGen();
         }

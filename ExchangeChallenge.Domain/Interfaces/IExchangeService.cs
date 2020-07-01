@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using ExchangeChallenge.Domain.Models;
 
 namespace ExchangeChallenge.Domain.Interfaces
 {
     public interface IExchangeService
     {
-        public Task<decimal> GetQuote(string category, string currency, decimal qty);
+        public Task<Exchange> GetQuote(string category, string currency, decimal qty);
     }
 }

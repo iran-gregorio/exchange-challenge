@@ -9,13 +9,13 @@ namespace ExchangeChallenge.UnitTest.Services
 {
     public class ExchangeServiceTest
     {
+        private readonly string category = "Teste";
+        private readonly string currency = "USD";
+        private readonly decimal qty = 1;
+
         [Fact]
         public async Task GetQuoteWithSuccess()
         {
-            var category = "Teste";
-            var currency = "USD";
-            var qty = 1;
-
             var mockFactor = new Mock<IFactorRepository>();
             mockFactor.Setup(m => m.GetFactor(currency)).Returns(Task.FromResult(1.2m));
 

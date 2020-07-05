@@ -63,6 +63,8 @@ namespace ExchangeChallenge.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Exchange Challenge API");
             });
+
+            app.UseGlobalExceptionHandler(loggerFactory);
         }
     }
 }

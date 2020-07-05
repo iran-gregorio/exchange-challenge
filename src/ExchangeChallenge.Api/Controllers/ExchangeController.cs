@@ -20,10 +20,17 @@ namespace ExchangeChallenge.Api.Controllers
         [HttpGet]
         [Produces("application/json")]
         [Route("{currency}")]
-        public async Task<ActionResult<ExchangeResponse>> Get(string currency, [FromQuery] decimal qty)
+        public async Task<ActionResult<ExchangeResponse>> Get(
+            string currency,
+            [FromQuery] decimal qty)
         {
             var category = User.GetCategory();
+
+            if (category is null)
+                return new BadRequestObjectResult("User don't has a category");
+
             var exchange = await _exchangeService.GetQuote(category, currency, qty);
+
             return new ExchangeResponse
             {
                 ValueRequested = exchange.ValueRequested,

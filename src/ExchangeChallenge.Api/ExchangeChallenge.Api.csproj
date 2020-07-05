@@ -11,6 +11,7 @@
     <Folder Include="Security\" />
     <Folder Include="Controllers\" />
     <Folder Include="Responses\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
